@@ -9,7 +9,7 @@ def create_user(user: UserCreate, db: Session):
         username=user.username,
         email=user.email,
         password=Hasher.get_hashed_password(user.password),
-        is_active=user.is_acitve,
+        is_active=user.is_active,
         is_superuser=user.is_superuser
     )
     db.add(user)
@@ -17,7 +17,6 @@ def create_user(user: UserCreate, db: Session):
     db.refresh(user)
 
     return user
-
 def verify_user(email, username, db: Session):
     username = db.query(Users).filter(Users.username == username).first()
     email = db.query(Users).filter(Users.email == email).first()

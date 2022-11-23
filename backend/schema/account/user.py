@@ -1,6 +1,7 @@
 import datetime
-
+from datetime import date
 from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 class UserCreate(BaseModel):
     username: str
@@ -13,7 +14,7 @@ class UserCreateResponse(BaseModel):
     username: str
     email: EmailStr
     is_active: bool
-    at_created: datetime.datetime
+    at_created: date
 
     class Config():
         orm_mode = True
